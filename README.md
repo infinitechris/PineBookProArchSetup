@@ -42,7 +42,7 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
  - Create partitions on this device
 
        fdisk /dev/mmcblk2
- - fdisk commands to be added here as I follow back through this guide to make a backup EMMC
+ - `fdisk` commands to be added here as I follow back through this guide to make a backup EMMC
  - Format `root` and `boot` partitions
 
        mkfs.ext4 /dev/mmcblk2p2
