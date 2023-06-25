@@ -1,6 +1,10 @@
+I finally grew tired of having to randomly follow at least three guides to setup Arch my normal way, so instead I figured I'd create this somewhat useful guide!
+
 # MicroSD Setup
 
 # EMMC Setup
+
+# KDE Plasma Setup
 
 # Post-Install Commands
 
