@@ -16,15 +16,16 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
 
 ## Prerequisites
  - An existing Arch or Manjaro install must be used on the PineBook Pro for this section. I will eventually cover installing Manjaro onto a MicroSD card to use for this section, but it is currently out of scope.
-- I prefer axel to wget, and I will be referencing it instead of wget in scripts. 
+- I prefer `axel` to `wget`, and I will be referencing it instead of `wget` in scripts. 
  - a MicroSD card to install Arch onto (naturally) at least 8GB in size
  - Internet access or *somewhat* recent downloads of:
-     - Tow Boot: I used the version released on 10/05/2021 [from here](https://github.com/Tow-Boot/Tow-Boot/releases/download/release-2021.10-005/pine64-pinebookPro-2021.10-005.tar.xz)
+     - `Tow Boot`: I used the version released on 10/05/2021 [from here](https://github.com/Tow-Boot/Tow-Boot/releases/download/release-2021.10-005/pine64-pinebookPro-2021.10-005.tar.xz)
      - [ARM Arch Linux install image](http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz)
           - [relevant signiture](http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.sig)
  - I do recommend conenction via SSH after rebooting into Arch from MicroSD, as there are some lengthly commands to type out, some which contain signing keys and are a pain to type out manually.
 # MicroSD Setup
- - All of the following commands must be run as root
+ - All of the following commands must be run as `root` so you must become `root`
+ - 
        sudo su -
  - I perform the following commands in `Downloads`
  - 
