@@ -1,13 +1,15 @@
-I finally grew tired of having to randomly follow at least three guides (and possibly have to re-work my install at least two more times before it's ready) to setup Arch my normal way, so instead I figured I'd create this somewhat useful guide!
+I finally grew tired of having to randomly follow at least three guides (and possibly have to re-work my install at least two more times before it's ready) to setup Arch my normal way, so instead I figured I'd create this somewhat useful guide.
 
 I'm not going into full detail of the steps performed, as they're listed on the guides I used.
 
 After this guide is complete, Arch with KDE Plasma for a DE will be setup!
 
+You may notice I opt for a cold start instead of rebooting. This is because of bugs within the Pinebook's wifi firmware. This is my preference, and `reboot` can be subbed in any place where `shutdown -h now` is noted.
+
 Moving on.
 
 **Guides used**:
-- [ ] [Installing Arch Linux on a PineBook Pro (external storage)](https://www.lorenzobettini.it/2022/12/installing-arch-linux-on-a-pinebook-pro-external-storage/)
+- [x] [Installing Arch Linux on a PineBook Pro (external storage)](https://www.lorenzobettini.it/2022/12/installing-arch-linux-on-a-pinebook-pro-external-storage/)
      - I follow this guide until I reach the point where a DE is being installed and then move to the itsfoss guide below
 - [ ] [How to Install Arch Linux [Step by Step Guide]](https://itsfoss.com/install-arch-linux/)
      - I mostly follow this guide for the locale setups.
@@ -29,10 +31,10 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
  - I do recommend conenction via SSH after rebooting into Arch from MicroSD, as there are some lengthly commands to type out, some which contain signing keys and are a pain to type out manually.
 # MicroSD Setup
  - All of the following commands must be run as `root` so you must become `root`
- - 
+
        sudo su -
  - I perform the following commands in `Downloads`
- - 
+
        cd Downloads
        axel -a https://github.com/Tow-Boot/Tow-Boot/releases/download/release-2021.10-005/pine64-pinebookPro-2021.10-005.tar.xz
        tar xvf pine64-pinebookPro-2021.10-005.tar.xz
@@ -87,8 +89,13 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
 
        shutdown -h now
 # EMMC Setup
-Whew! That part is done. From here in you **will** need a live internet connection. I'll document how I handle this with my dongle, but your solution likely varies.
+Whew! That part is done. From here in you **will** need a live internet connection.
 
+I **highly** recommend connecting via SSH for this section as there is a key signiture we will be verifying against. This will be covered in advance of the relevant step.
+
+That said it's not 100% needed as I've completed this install manually typing in commands to be run quite a bit in the past with moderate levels of success!
+
+## Updating Arch on MicroSD
 You will need to select the MicroSD to boot from for this section.
 
 When you're ready, power back up, then press `ESC` when the prompt on the bottom of your screen shows up.
@@ -101,6 +108,69 @@ If the steps above were completed successffuly, it should boot to a login prompt
 
        passwd
        passwd alarm
+- Initalize the `pacman` keyring and populate `archlinuxarm` 
+
+       pacman-key --init
+       pacman-key --populate archlinuxarm
+ - Sync time and date from `ntp` servers to hardware (I'm on the east cost and use `Detroit`)
+
+       timedatectl set-timezone America\Detroit
+       timedatectl set-ntp on
+       hwclock --systohc
+ - Config your `locale` and generating
+
+       nano /etc/locale.gen
+ - Uncomment `#en_US.UTF-8` and save/ exit
+ - Generate `locales`
+
+       locale-gen
+ - Edit `locale.conf` and set `LANG` vairalbe to match the above
+
+       nano /etc/locale.conf
+ - Delete `C` and replace with `en_US.UTF-8`, then save/ exit
+ - I typically update out of date packages at this time that way the OS on the MicroSD is up to date
+
+       pacman -Syu
+ - Shutdown
+
+       shutdown -h now
+   
+You can continue following alog with this guide from this point.
+
+This will give you a 100% usable MicroSD running pinebook firmware, or skip to [here](https://github.com/infinitechris/PineBookProArchSetup/edit/main/README.md#writing-os-to-emmc) as the next steps will all be repeated on the Arch install on the EMMC.
+
+## Installing Pinebook Firmware on MicroSD
+Power back up your system to verify that everything updated correctly, hitting `ESC` when the prompt on the bottom of your screen appears, and selecting the MicroSD to boot from.
+
+- When the login prompt appears, login as `alarm` at this point, so that we can ssh back in
+- run `sudo wifi-menu` and connect to your AP
+- run `ifconfig` to find your IP address
+- On another device connect to your pinebook's ip address using ssh to your Pinebook
+- Become `root` again, after logging in, as all of the following commands need to be run as `root` and not `sudo COMMAND`
+
+       sudo su
+- Add the kiljan pgp keys for the Pinebook firmware
+
+       pacman-key --keyserver hkps://keys.openpgp.org/ --recv-keys A1EC3C686EF7A9DD232D1563D4D12D6AA6A92769
+       pacman-key --lsign-key A1EC3C686EF7A9DD232D1563D4D12D6AA6A92769
+
+       cat << 'EOF' >> /etc/pacman.conf
+
+       [archlinuxarm-pbp]
+       SigLevel = Optional TrustedOnly
+       Server = http://pacman.kiljan.org/$repo/os/$arch
+       EOF
+ - Sync the repos
+
+       pacman -Sy
+ - Install the packages for the Pinebook firmware
+
+       pacman -S ap6256-firmware libdrm-pinebookpro pinebookpro-audio pinebookpro-post-install towboot-pinebookpro-bin
+ - Shutdown
+
+       shutdown -h now
+
+## Writing OS to EMMC
 
 # KDE Plasma Setup
 
