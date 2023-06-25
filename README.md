@@ -137,7 +137,7 @@ If the steps above were completed successffuly, it should boot to a login prompt
    
 You can continue following alog with this guide from this point.
 
-This will give you a 100% usable MicroSD running pinebook firmware, or skip to [here](https://github.com/infinitechris/PineBookProArchSetup/edit/main/README.md#writing-os-to-emmc) as the next steps will all be repeated on the Arch install on the EMMC.
+This will give you a 100% usable MicroSD running pinebook firmware, or skip to [here](https://github.com/infinitechris/PineBookProArchSetup/tree/main#installing-pinebook-firmware-on-microsd) as the next steps will all be repeated on the Arch install on the EMMC.
 
 ## Installing Pinebook Firmware on MicroSD
 Power back up your system to verify that everything updated correctly, hitting `ESC` when the prompt on the bottom of your screen appears, and selecting the MicroSD to boot from.
