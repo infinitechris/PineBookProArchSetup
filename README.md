@@ -1,4 +1,11 @@
-I finally grew tired of having to randomly follow at least three guides to setup Arch my normal way, so instead I figured I'd create this somewhat useful guide!
+I finally grew tired of having to randomly follow at least three guides (and possibly have to re-work my install at least two more times before it's ready) to setup Arch my normal way, so instead I figured I'd create this somewhat useful guide!
+
+After this guide is complete, Arch and KDE Plasma will be setup!
+
+Guides to be integrated:
+- [ ] [Installing Arch Linux on a PineBook Pro (external storage)](https://www.lorenzobettini.it/2022/12/installing-arch-linux-on-a-pinebook-pro-external-storage/)
+- [ ] [How to Properly Install and Setup KDE Plasma on Arch Linux](https://itsfoss.com/install-kde-arch-linux/)
+- [ ] [How to Install Arch Linux [Step by Step Guide]](https://itsfoss.com/install-arch-linux/)
 
 # MicroSD Setup
 
