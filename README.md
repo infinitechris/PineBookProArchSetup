@@ -243,7 +243,7 @@ Power back up your system to verify that everything is installed correctly, hitt
        shutdown -h now
 From this point on, we will be booting from the EMMC. You can still hit `ESC` then select this device, but the system will boot to EMMC by default as long as there's a bootable system installed there
 ## Installing Pinebook firmware to EMMC
-The exact same steps from [Installing Pinebook Firmware on MicroSD]() will be followed to the letter. So instead of duplicating them, I suggest following that section. The only difference is that wewill be booting from EMMC and not MicroSD
+The exact same steps from [Installing Pinebook Firmware on MicroSD](https://github.com/infinitechris/PineBookProArchSetup/tree/main#installing-pinebook-firmware-on-microsd) will be followed to the letter. So instead of duplicating them, I suggest following that section. The only difference is that wewill be booting from EMMC and not MicroSD
 
 # KDE Plasma Setup
 
