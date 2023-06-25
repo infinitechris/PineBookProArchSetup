@@ -6,7 +6,7 @@ After this guide is complete, Arch with KDE Plasma for a DE will be setup!
 
 Moving on.
 
-Guides used:
+**Guides used**:
 - [ ] [Installing Arch Linux on a PineBook Pro (external storage)](https://www.lorenzobettini.it/2022/12/installing-arch-linux-on-a-pinebook-pro-external-storage/)
      - I follow this guide until I reach the point where a DE is being installed and then move to the itsfoss guide below
 - [ ] [How to Install Arch Linux [Step by Step Guide]](https://itsfoss.com/install-arch-linux/)
