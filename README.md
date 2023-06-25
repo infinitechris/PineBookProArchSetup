@@ -11,8 +11,6 @@ Moving on.
 **Guides used**:
 - [x] [Installing Arch Linux on a PineBook Pro (external storage)](https://www.lorenzobettini.it/2022/12/installing-arch-linux-on-a-pinebook-pro-external-storage/)
      - I follow this guide until I reach the point where a DE is being installed and then move to the itsfoss guide below
-- [ ] [How to Install Arch Linux [Step by Step Guide]](https://itsfoss.com/install-arch-linux/)
-     - I mostly follow this guide for the locale setups.
 - [ ] [How to Properly Install and Setup KDE Plasma on Arch Linux](https://itsfoss.com/install-kde-arch-linux/)
      - I prefer this DE for my use case
 
@@ -246,8 +244,45 @@ From this point on, we will be booting from the EMMC. You can still hit `ESC` th
 The exact same steps from [Installing Pinebook Firmware on MicroSD](https://github.com/infinitechris/PineBookProArchSetup/tree/main#installing-pinebook-firmware-on-microsd) will be followed to the letter. So instead of me duplicating them here, I suggest following that section. The only difference is that wewill be booting from EMMC and not MicroSD
 
 # KDE Plasma Setup
+Now that we have firmware added to the EMMC, the MicroSD can be removed along with and dongles/ adapters you were using to install said firmware.
 
-# Post-Install Commands
+It's time to get a DM installed and get into our operating envirnment!
+- After booting up and logging in as `alarm` lets make our personal user name that we'll be using going forward
+
+       useradd -m triconda
+ - give yourself a password
+
+       passwd triconda
+ - give yourself group permissions (add these here)
+ - We will now install the following KDE prereqs and applications
+     - Xorg group
+     - KDE Plasma Desktop Environment
+     - Wayland session for KDE Plasma
+     - KDE applications
+
+              pacman -S xorg plasma plasma-wayland-session kde-applications
+ - Once the above completes, `enable` the `Displace Manager service`
+
+        systemctl enable sddm.service
+
+- Shutdown
+
+       shutdown -h now
+We're now ready to play around in a GUI and perform some needed Post-Install tweaks!
+# Post-Install Tweaks
+These are all applications that I install (chromium, snapd store, etc) to make the laptop into a more usable workstation
+## KDE Tweaks
+ - Dark mode / theme, power saving, login and lock screen setup here
+## Yay AUR Helper
+ - Install documentation here
+## Snapd Store
+ - Install documentation here
+## Chromium
+ - Install documentation here
+## KDE Connect config
+ - Simple walkthrough of app and android app setup
+## Telegram
+ - Install documentation here
 
 # Other Notes
 Right now, I have the following lines in `/etc/pacman.conf`:
