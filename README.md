@@ -178,6 +178,72 @@ Power back up your system to verify that everything updated correctly, hitting `
        shutdown -h now
 
 ## Writing OS to EMMC
+A lot of the following commands in the following section are the same as [MicroSD Setup](https://github.com/infinitechris/PineBookProArchSetup/blob/main/README.md#microsd-setup), as the majority of the changes are for the destination for `dd` 
+
+Power back up your system to verify that everything is installed correctly, hitting `ESC` when the prompt on the bottom of your screen appears, and selecting the MicroSD to boot from.
+
+ - When the login prompt appears, login as `root`
+ - Create the `Downloads` directory
+
+       mkdir Downloads
+ - Change to this directory, download `Tow Boot`, then extract it
+
+       cd Downloads
+       axel -a https://github.com/Tow-Boot/Tow-Boot/releases/download/release-2021.10-005/pine64-pinebookPro-2021.10-005.tar.xz
+       tar xvf pine64-pinebookPro-2021.10-005.tar.xz
+ - use `lsblk` before running the following to figure out which device you will be flashing Tow Boot and change if needed
+ 
+       dd if=pine64-pinebookPro-2021.10-005/shared.disk-image.img of=/dev/mmcblk1 bs=1M oflag=direct,sync status=progress
+ - Create partitions on this device
+
+       fdisk /dev/mmcblk1
+ - `fdisk` commands to be added here as I follow back through this guide to make a backup EMMC
+ - Format `root` and `boot` partitions
+
+       mkfs.ext4 /dev/mmcblk1p2
+       mkfs.ext4 /dev/mmcblk1p3
+ - Mount `root` and `boot` partitions
+
+       mount /dev/mmcblk1p3 /mnt
+       mkdir /mnt/boot
+       mount /dev/mmcblk1p2 /mnt/boot
+ - Download the Arch ARM Installer Image and verify it via gpg
+
+       axel -a http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
+       axel -a http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz.sig
+       gpg --keyserver keyserver.ubuntu.com --recv-keys 68B3537F39A313B3E574D06777193F152BDBE6A6
+       gpg --verify ArchLinuxARM-aarch64-latest.tar.gz.sig
+ - Expand the image to `root` partition
+
+       bsdtar -xpvf ArchLinuxARM-aarch64-latest.tar.gz -C /mnt
+ - Copy `root` partition UUID to `/mnt/etc/fstab`
+
+       blkid /dev/mmcblk1p3 >> /mnt/etc/fstab
+ - Adjust `/mnt/etc/fstab` accordingly
+
+       nano /mnt/etc/fstab
+ - copy `boot` partition UUID to `/mnt/etc/fstab`
+
+       blkid /dev/mmcblk1p2 >> /mnt/etc/fstab
+ - Adjust `/mnt/etc/fstab` accordingly
+       
+       nano /mnt/etc/fstab
+ - Create `extlinux` directory within `/mnt/boot`
+
+       mkdir -p /mnt/boot/extlinux
+ - Add the `root` partition UUID to `extlinux.conf` file
+ - 
+       nano /mnt/boot/extlinux/extlinux.conf
+ - Add `pacstrap` install of `dialog` and anything else needed before shutting down and restarting here
+ - Unmount the drives mounted to `/mnt`
+
+       umount -R /mnt
+ - Shutdown
+
+       shutdown -h now
+From this point on, we will be booting from the EMMC. You can still hit `ESC` then select this device, but the system will boot to EMMC by default as long as there's a bootable system installed there
+## Installing Pinebook firmware to EMMC
+The exact same steps from [Installing Pinebook Firmware on MicroSD]() will be followed to the letter. So instead of duplicating them, I suggest following that section. The only difference is that wewill be booting from EMMC and not MicroSD
 
 # KDE Plasma Setup
 
