@@ -27,6 +27,7 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
  - All of the following commands must be run as root
        sudo su -
  - I perform the following commands in `Downloads`
+ - 
        cd Downloads
        axel -a https://github.com/Tow-Boot/Tow-Boot/releases/download/release-2021.10-005/pine64-pinebookPro-2021.10-005.tar.xz
        tar xvf pine64-pinebookPro-2021.10-005.tar.xz
