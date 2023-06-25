@@ -252,7 +252,7 @@ The exact same steps from [Installing Pinebook Firmware on MicroSD](https://gith
 # KDE Plasma Setup
 Now that we have firmware added to the EMMC, the MicroSD can be removed along with and dongles/ adapters you were using to install said firmware.
 
-It's time to get a DM installed and get into our operating envirnment!
+It's time to get a DE installed and get into our operating envirnment!
 - After booting up and logging in as `alarm` lets make our personal user name that we'll be using going forward
 
        useradd -m triconda
