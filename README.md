@@ -79,7 +79,7 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
  - Add the `root` partition UUID to `extlinux.conf` file
  - 
        nano /mnt/boot/extlinux/extlinux.conf
- - Add `pacstrap` install of `dialog` and anything else needed before reboot here
+ - Add `pacstrap` install of `dialog` and anything else needed before shutting down and restarting here
  - Unmount the drives mounted to `/mnt`
 
        umount -R /mnt
