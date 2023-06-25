@@ -6,12 +6,14 @@ After this guide is complete, Arch with KDE Plasma for a DE will be setup!
 
 You may notice I opt for a cold start instead of rebooting. This is because of bugs within the Pinebook's wifi firmware. This is my preference, and `reboot` can be subbed in any place where `shutdown -h now` is noted.
 
+**NOTE**: Following this guide WILL overwrite all MicroSD and EMMC contents. YOU HAVE BEEN WARNED!
+
 Moving on.
 
 **Guides used**:
 - [x] [Installing Arch Linux on a PineBook Pro (external storage)](https://www.lorenzobettini.it/2022/12/installing-arch-linux-on-a-pinebook-pro-external-storage/)
      - I follow this guide until I reach the point where a DE is being installed and then move to the itsfoss guide below
-- [ ] [How to Properly Install and Setup KDE Plasma on Arch Linux](https://itsfoss.com/install-kde-arch-linux/)
+- [x] [How to Properly Install and Setup KDE Plasma on Arch Linux](https://itsfoss.com/install-kde-arch-linux/)
      - I prefer this DE for my use case
 
 Neither of the two main guides (Pine64's own and the other guide here on GitHub) I followed worked out of the box. So I ended up following Lorenzo Bettini's guide which worked every time! (provided I didn't mess up a step)
