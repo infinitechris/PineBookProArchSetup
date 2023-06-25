@@ -131,6 +131,13 @@ If the steps above were completed successffuly, it should boot to a login prompt
  - I typically update out of date packages at this time that way the OS on the MicroSD is up to date
 
        pacman -Syu
+ - As long as there were no errors, we will install `sudo`
+
+       pacman -S sudo
+ - Edit `sudoers` to allow members of the group `wheel` to access `sudo`
+
+       nano /etc/sudoers
+ - Uncomment the line `# %wheel ALL=(ALL:ALL) ALL` and then save/ exit
  - Shutdown
 
        shutdown -h now
