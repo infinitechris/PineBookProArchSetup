@@ -6,6 +6,8 @@ After this guide is complete, Arch with KDE Plasma for a DE will be setup!
 
 You may notice I opt for a cold start instead of rebooting. This is because of bugs within the Pinebook's wifi firmware. This is my preference, and `reboot` can be subbed in any place where `shutdown -h now` is noted.
 
+For a guide to setup of a MicroSD in a USB adapter, follow [this guide](https://github.com/OGLTE/PineBookProArchSetup)
+
 **NOTE**: Following this guide WILL overwrite all MicroSD and EMMC contents.
 
 YOU HAVE BEEN WARNED!
