@@ -23,7 +23,9 @@ Neither of the two main guides (Pine64's own and the other guide here on GitHub)
 Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/products/raspberry-pi-usb-wifi-dongle/) that I will be using until the PineBook Firmware is loaded, so your steps leading up to installing firmware will likely vary, YMMV.
 
 ## Prerequisites
- - An existing Arch or Manjaro install must be used on the PineBook Pro for setup. I will eventually cover installing Manjaro onto a MicroSD card to use for this section, but it is currently out of scope.
+ - An existing Arch or Manjaro install must be used on the PineBook Pro for setup.
+     - Following the Manjaro install guide will get you to a usable system to install from
+     - `pacstrap` will be needed to install applications
 - I prefer `axel` to `wget`, and I will be referencing it instead of `wget` in scripts. 
  - a MicroSD card to install Arch onto (naturally) at least 8GB in size
  - Internet access or *somewhat* recent downloads of:
