@@ -111,6 +111,6 @@ Right now, I have the following lines in `/etc/pacman.conf`:
 
      # Pacman won't upgrade packages listed in IgnorePkg and members of IgnoreGroup
      IgnorePkg   = generic-post-install pinebookpro-post-install
-This is to ignore the two above packages from attempting to update through `core`, `extra`, `community`, `alarm` and `aur` repos, which don't contain it and breaks any attempts at a system update right now for *some reason* yet to be found. Full `pacman.conf` that is working for me to this day is in [files](https://github.com/infinitechris/PineBookProArchSetup/blob/2d1a0ec5b527f502705739a9c55fa2c184ca0e95/files/pacman.conf)
+This is to ignore the two above packages from attempting to update through `core`, `extra`, `community`, `alarm`, and `aur` repos, which don't contain it and breaks any attempts at a system update right now for *some reason* yet to be found. Full `pacman.conf` that is working for me to this day is in [files](https://github.com/infinitechris/PineBookProArchSetup/blob/2d1a0ec5b527f502705739a9c55fa2c184ca0e95/files/pacman.conf)
 
 I also have a mobile hotspot that I use to access the internet, and if I was previously on a *real* AP, I have found that I have to stop `NetworkManager` (if already running) or start (if not) and then stop it. Then `wifi-menu` itializes `wlan` fine
