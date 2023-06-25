@@ -96,7 +96,7 @@ When you're ready, power back up, then press `ESC` when the prompt on the bottom
 Then select the SD card to boot from.
 
 If the steps above were completed successffuly, it should boot to a login prompt.
- - Login as root, password root
+ - Login as `root`, password `root`
  - I recommend changing `root` and `alarm` passwords at this tine
 
        passwd
