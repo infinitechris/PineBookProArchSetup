@@ -270,11 +270,7 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
 # EMMC Setup
 Whew! That part is done. From here in you **will** need a live internet connection.
 
-I **highly** recommend connecting via SSH for this section as there is a key signiture we will be verifying against. This will be covered in advance of the relevant step.
-
-That said it's not 100% needed as I've completed this install manually typing in commands to be run quite a bit in the past with moderate levels of success!
-
-I also **highly** recommend plugging your laptop into a power source before booting from MicroSD as we will NOT have a battery indicator until we have a DE.
+I **highly** recommend plugging your laptop into a power source before booting from MicroSD as we will NOT have a battery indicator until we have a DE.
 
 ## Updating Arch on MicroSD
 You will need to select the MicroSD to boot from for this section.
