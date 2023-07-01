@@ -289,14 +289,23 @@ Then select the SD card to boot from.
 
 If the steps above were completed successffuly, it should boot to a login prompt.
 
-![root menu login screen](/files/PXL_20230701_201608156.jpg)
-*FIXME with better image*
+![root menu login screen](files/PXL_20230701_214400589.jpg)
 
  - Login as `root`, password `root`
  - I recommend changing `root` and `alarm` passwords at this tine
 
        passwd
+     ![change root password](files/PXL_20230701_214430581.jpg)
+ - Enter your new `root` password
+     ![new root password](files/PXL_20230701_214440024.jpg)
+ - Confirm new `root` password
+     ![cconfirm new password](files/PXL_20230701_214454396.jpg)
+ - Change password for `alarm` user
        passwd alarm
+ - Enter the new password for `alarm`
+   ![new alarm passowrd](files/PXL_20230701_214514816.jpg)
+- Confirm password for `alarm`
+   ![confirm alarm password](files/PXL_20230701_214524205.jpg)
  - Run `wifi-menu` to connect to wifi (if needed)
 
      ![run wifi-menu](files/PXL_20230701_210544636.jpg)
@@ -319,7 +328,10 @@ If the steps above were completed successffuly, it should boot to a login prompt
  - Initalize the `pacman` keyring and populate `archlinuxarm` 
 
        pacman-key --init
+   ![run packman-key init](files/PXL_20230701_214743301.jpg)
+   
        pacman-key --populate archlinuxarm
+   ![run pacman-key --populate archlinuxarm](files/PXL_20230701_214814020.jpg)
  - Sync time and date from `ntp` servers to hardware (I'm on the east cost and use `Detroit`)
 
        timedatectl set-timezone America\Detroit
@@ -350,8 +362,6 @@ If the steps above were completed successffuly, it should boot to a login prompt
  - Shutdown
 
        shutdown -h now
-   
-You can continue following alog with this guide from this point.
 
 This will give you a 100% usable MicroSD running pinebook firmware, or skip to [here](https://github.com/infinitechris/PineBookProArchSetup/tree/main#writing-os-to-emmc) as the next steps will all be repeated on the Arch install on the EMMC.
 
@@ -359,6 +369,7 @@ This will give you a 100% usable MicroSD running pinebook firmware, or skip to [
 Power back up your system to verify that everything updated correctly, hitting `ESC` when the prompt on the bottom of your screen appears, and selecting the MicroSD to boot from.
 
 - When the login prompt appears, login as `alarm` at this point, so that we can ssh back in
+  ![alarm login](files/PXL_20230701_214626337.jpg)
 - run `sudo wifi-menu` and connect to your AP
 - run `ifconfig` to find your IP address
 - On another device connect to your pinebook's ip address using ssh to your Pinebook
