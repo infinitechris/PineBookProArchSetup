@@ -281,17 +281,42 @@ You will need to select the MicroSD to boot from for this section.
 
 When you're ready, power back up, then press `ESC` when the prompt on the bottom of your screen shows up.
 
-![image]()
+![press escape prompt](files/PXL_20230701_210328877.jpg)
 
 Then select the SD card to boot from.
 
+![boot device selection menu](files/PXL_20230701_210450481.jpg)
+
 If the steps above were completed successffuly, it should boot to a login prompt.
+
+![root menu login screen](/files/PXL_20230701_201608156.jpg)
+*FIXME with better image*
+
  - Login as `root`, password `root`
  - I recommend changing `root` and `alarm` passwords at this tine
 
        passwd
        passwd alarm
-- Initalize the `pacman` keyring and populate `archlinuxarm` 
+ - Run `wifi-menu` to connect to wifi (if needed)
+
+     ![run wifi-menu](files/PXL_20230701_210544636.jpg)
+     - wifi-menu will take a second to scan for networks
+       ![wifi-menu loading](files/PXL_20230701_210550375.jpg)
+     - wifi-menu will display available networks
+       ![available networks](files/PXL_20230701_210553821.jpg)
+     - Press `enter` to select your wifi network
+     - wifi-menu will prompt to save config
+       ![prompt to save network](files/PXL_20230701_210600125.jpg)
+     - Enter wifi password
+       ![enter wifi password](files/PXL_20230701_210616519.jpg)
+     - wifi-menu will exit
+       ![back to root prompt](files/PXL_20230701_210635689.jpg)
+     - After a few seconds, you should have an ip. Run `ifconfig` to confirm
+       ![ifconfig](files/PXL_20230701_210656543.jpg)
+     - Ping `www.google.com` to confirm internet access
+       ![ping google](files/PXL_20230701_210707989.jpg)
+
+ - Initalize the `pacman` keyring and populate `archlinuxarm` 
 
        pacman-key --init
        pacman-key --populate archlinuxarm
