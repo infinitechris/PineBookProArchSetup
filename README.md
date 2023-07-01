@@ -46,20 +46,20 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
        tar xvf pine64-pinebookPro-2021.10-005.tar.xz
  - use `lsblk` before running the following to figure out which device you will be flashing Tow Boot and change if needed
  
-       dd if=pine64-pinebookPro-2021.10-005/shared.disk-image.img of=/dev/mmcblk2 bs=1M oflag=direct,sync status=progress
+       dd if=pine64-pinebookPro-2021.10-005/shared.disk-image.img of=/dev/mmcblk1 bs=1M oflag=direct,sync status=progress
  - Create partitions on this device
 
-       fdisk /dev/mmcblk2
+       fdisk /dev/mmcblk1
  - `fdisk` commands to be added here as I follow back through this guide to make a backup EMMC
  - Format `root` and `boot` partitions
 
-       mkfs.ext4 /dev/mmcblk2p2
-       mkfs.ext4 /dev/mmcblk2p3
+       mkfs.ext4 /dev/mmcblk1p2
+       mkfs.ext4 /dev/mmcblk1p3
  - Mount `root` and `boot` partitions
 
-       mount /dev/mmcblk2p3 /mnt
+       mount /dev/mmcblk1p3 /mnt
        mkdir /mnt/boot
-       mount /dev/mmcblk2p2 /mnt/boot
+       mount /dev/mmcblk1p2 /mnt/boot
  - Download the Arch ARM Installer Image and verify it via gpg
 
        axel -a http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
@@ -71,13 +71,13 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
        bsdtar -xpvf ArchLinuxARM-aarch64-latest.tar.gz -C /mnt
  - Copy `root` partition UUID to `/mnt/etc/fstab`
 
-       blkid /dev/sda3 >> /mnt/etc/fstab
+       blkid /dev/mmcblk1p3 >> /mnt/etc/fstab
  - Adjust `/mnt/etc/fstab` accordingly
 
        nano /mnt/etc/fstab
  - copy `boot` partition UUID to `/mnt/etc/fstab`
 
-       blkid /dev/sda2 >> /mnt/etc/fstab
+       blkid /dev/mmcblk1p2 >> /mnt/etc/fstab
  - Adjust `/mnt/etc/fstab` accordingly
        
        nano /mnt/etc/fstab
