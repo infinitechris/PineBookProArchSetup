@@ -332,26 +332,58 @@ If the steps above were completed successffuly, it should boot to a login prompt
    
        pacman-key --populate archlinuxarm
    ![run pacman-key --populate archlinuxarm](files/PXL_20230701_214814020.jpg)
+ - The pgp keys for the distribution will populate
+   ![keys added](files/PXL_20230701_214821334.jpg)
  - Sync time and date from `ntp` servers to hardware (I'm on the east cost and use `Detroit`)
 
        timedatectl set-timezone America\Detroit
+   ![set timezone to Detroit](files/PXL_20230701_214859555.jpg)
+   
        timedatectl set-ntp on
+   ![enable ntp](files/PXL_20230701_214923627.jpg)
+   
        hwclock --systohc
- - Config your `locale` and generating
+   ![snyc hardware clock to ntp](files/PXL_20230701_214951845.jpg)
+ - Config your `locale`
 
        nano /etc/locale.gen
- - Uncomment `#en_US.UTF-8` and save/ exit
+   ![edit locale.gen](files/PXL_20230701_215026049.jpg)
+- Press `CTRL+W` to bring up the `Search` dialog
+  ![search](files/PXL_20230701_215216531.jpg)
+- Type `#en_US` to search for the line we need to uncomment
+  ![search for line](files/PXL_20230701_215255808.jpg)
+ - Uncomment this line
+   ![line to uncomment](files/PXL_20230701_215319262.jpg)
+- Confirm it matches the following
+  ![edited line](files/PXL_20230701_215334962.jpg)
+- If it does, then save and exit
  - Generate `locales`
 
        locale-gen
+   ![locale-gen](files/PXL_20230701_215406165.jpg)
+- This will load the uncommented locale
+  ![locale generated](files/PXL_20230701_215418329.jpg)
  - Edit `locale.conf` and set `LANG` vairalbe to match the above
 
        nano /etc/locale.conf
- - Delete `C` and replace with `en_US.UTF-8`, then save/ exit
+ - Delete `C`
+   ![before](files/PXL_20230701_215447236.jpg)
+- Replace with `en_US.UTF-8` to match, then save/ exit
+   ![after](files/PXL_20230701_215520004.jpg)
  - I typically update out of date packages at this time that way the OS on the MicroSD is up to date
 
        pacman -Syu
+   ![run pacman](files/PXL_20230701_215543150.jpg)
       - If pacman haults at the `alarm` repo for a long while (more than 30 to 60 seconds,) you may need to adjust your repos to use the `archlinuxarm`. mirror. A working pacman.conf is included in files
+        ![alarm repo hanging](files/PXL_20230701_215739997.jpg)
+     - Updating all of the out of date packages will take some time
+        ![packages to update](files/PXL_20230701_220015280.jpg)
+     - Just a few packages for me to update
+      ![pending updates](files/PXL_20230701_220025328.jpg)
+     - Almost done!
+      ![almost done](files/PXL_20230701_220532119.jpg)
+     - And done!
+       ![done](iles/PXL_20230701_220806429.jpg)
  - As long as there were no errors, we will install `sudo`
 
        pacman -S sudo
