@@ -339,6 +339,7 @@ If the steps above were completed successffuly, it should boot to a login prompt
  - I typically update out of date packages at this time that way the OS on the MicroSD is up to date
 
        pacman -Syu
+      - If pacman haults at the `alarm` repo for a long while, you may need to adjust your repos to use the `archlinuxarm`. mirror. A working pacman.conf is included in files
  - As long as there were no errors, we will install `sudo`
 
        pacman -S sudo
