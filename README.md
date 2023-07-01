@@ -114,15 +114,40 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
  - Copy `root` partition UUID to `/mnt/etc/fstab`
 
        blkid /dev/mmcblk1p3 >> /mnt/etc/fstab
- - Adjust `/mnt/etc/fstab` accordingly
+ - Run `nano /mnt/etc/fstab` to adjust this file
 
-       nano /mnt/etc/fstab
+       nano /mnt/etc/fsstab
+ - `fstab` contents will be similar to the following
+
+       # Static information about the filesystems.
+       # See fstab(5) for details.
+
+       # <file system> <dir> <type> <options> <dump> <pass>
+       /dev/mmcblk1p3: UUID="858802ab-cd7f-4ea2-8865-f3d596ea9661" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="3edfbfe3-2c6c-4ab7-8bfb-e5dce0c5fe11"
+ - Line five will need to be adjusted similar to the following
+
+       UUID=858802ab-cd7f-4ea2-8865-f3d596ea9661       /       ext4    defaults        0       1
+     - The string after `UUID=` will match your UUID for partition 3
+ - Save and exit by pressing `CTRL+X` then pressing `y` then `ENTER`
  - copy `boot` partition UUID to `/mnt/etc/fstab`
 
        blkid /dev/mmcblk1p2 >> /mnt/etc/fstab
- - Adjust `/mnt/etc/fstab` accordingly
+ - Run `nano /mnt/etc/fstab` again to adjust
        
        nano /mnt/etc/fstab
+ - `fstab` contents will be siliar to the following
+
+       # Static information about the filesystems.
+       # See fstab(5) for details.
+
+       # <file system> <dir> <type> <options> <dump> <pass>
+       UUID=858802ab-cd7f-4ea2-8865-f3d596ea9661       /       ext4    defaults        0       1
+       /dev/mmcblk1p2: UUID="609da8e6-9564-4cbf-80fc-770548b0abec" BLOCK_SIZE="1024" TYPE="ext4" PARTUUID="8d7e1eed-c3e8-4e9a-a8cb-7b64215cbe46"
+ - Line six will need to be adjusted similar to the following
+
+       UUID=609da8e6-9564-4cbf-80fc-770548b0abec       /boot   ext4    defaults        0       2
+     - the string after `UUID=` will match your UUID for partition 2
+ - Save and exit by pressing `CTRL+X` then pressing `y` then by `ENTER`
  - Create `extlinux` directory within `/mnt/boot`
 
        mkdir -p /mnt/boot/extlinux
