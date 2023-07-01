@@ -10,7 +10,8 @@ For a guide to setup of a MicroSD in a USB adapter, follow [this guide](https://
 
 **NOTE**: Following this guide WILL overwrite all MicroSD and EMMC contents.
 
-YOU HAVE BEEN WARNED!
+![YOU HAVE BEEN WARNED gif](https://github.com/infinitechris/PineBookProArchSetup/assets/5414345/17a89e89-1f0a-4a6a-9a00-df8bdf4413ec)
+
 
 Moving on.
 
