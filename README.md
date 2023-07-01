@@ -48,10 +48,51 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
  - use `lsblk` before running the following to figure out which device you will be flashing Tow Boot and change if needed
  
        dd if=pine64-pinebookPro-2021.10-005/shared.disk-image.img of=/dev/mmcblk1 bs=1M oflag=direct,sync status=progress
- - Create partitions on this device
+ - Run `fdisk` to create partitions on this device
 
        fdisk /dev/mmcblk1
- - `fdisk` commands to be added here as I follow back through this guide to make a backup EMMC
+      - Create second parition (defaults are fine for all but the partition size)
+
+            Command (m for help): n
+            Partition number (2-128, default 2): 
+            First sector (24640-62521310, default 26624): 
+            Last sector, +/-sectors or +/-size{K,M,G,T,P} (26624-62521310, default 62519295): +256M
+
+            Created a new partition 2 of type 'Linux filesystem' and of size 256 MiB.
+      - Change to expert mode
+
+            Command (m for help): x
+
+     - Make parition bootable
+
+           Expert command (m for help): A
+           Partition number (1,2, default 2): 
+
+           The LegacyBIOSBootable flag on partition 2 is enabled now.
+     - Exit expert mode
+
+           Expert command (m for help): r
+     - Create third partition (defaults are fine here)
+
+            Command (m for help): n
+            Partition number (3-128, default 3): 
+            First sector (550912-62521310, default 550912): 
+            Last sector, +/-sectors or +/-size{K,M,G,T,P} (550912-62521310, default 62519295): 
+
+            Created a new partition 3 of type 'Linux filesystem' and of size 29.5 GiB.
+       - If the card was used before, you'll get a warning about existing signiture removal
+
+              Partition #3 contains a ext4 signature.
+
+              Do you want to remove the signature? [Y]es/[N]o: y
+
+              The signature will be removed by a write command.
+     - Write changes to disk 
+
+           Command (m for help): w
+           The partition table has been altered.
+           Calling ioctl() to re-read partition table.
+           Syncing disks.
  - Format `root` and `boot` partitions
 
        mkfs.ext4 /dev/mmcblk1p2
