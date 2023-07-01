@@ -12,7 +12,6 @@ For a guide to setup of a MicroSD in a USB adapter, follow [this guide](https://
 
 ![YOU HAVE BEEN WARNED gif](https://github.com/infinitechris/PineBookProArchSetup/assets/5414345/17a89e89-1f0a-4a6a-9a00-df8bdf4413ec)
 
-
 Moving on.
 
 **Guides used**:
@@ -207,7 +206,7 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
 
        :: Proceed with installation? [Y/n] y
        :: Retrieving packages...
-       arch-install-scripts-28-1-any             15.4 KiB  32.2 KiB/s 00:00 [#######################################] 100%
+       arch-install-scripts-28-1-any             15.4 KiB  32.2 KiB/s 00:00  [#######################################] 100%
        (1/1) checking keys in keyring                                        [#######################################] 100%
        (1/1) checking package integrity                                      [#######################################] 100%
        (1/1) loading package files                                           [#######################################] 100%
@@ -262,7 +261,6 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
        (3/4) Arming ConditionNeedsUpdate...
        (4/4) Reloading system bus configuration...
 
-
  - Unmount the drives mounted to `/mnt`
 
        umount -R /mnt
@@ -276,10 +274,14 @@ I **highly** recommend connecting via SSH for this section as there is a key sig
 
 That said it's not 100% needed as I've completed this install manually typing in commands to be run quite a bit in the past with moderate levels of success!
 
+I also **highly** recommend plugging your laptop into a power source before booting from MicroSD as we will NOT have a battery indicator until we have a DE.
+
 ## Updating Arch on MicroSD
 You will need to select the MicroSD to boot from for this section.
 
 When you're ready, power back up, then press `ESC` when the prompt on the bottom of your screen shows up.
+
+![image]()
 
 Then select the SD card to boot from.
 
