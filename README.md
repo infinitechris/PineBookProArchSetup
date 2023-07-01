@@ -184,7 +184,76 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
 
        APPEND root=UUID=858802ab-cd7f-4ea2-8865-f3d596ea9661 rw
  - Save and exit by pressing `CTRL+X` then pressing `y` then by `ENTER`
- - Add `pacstrap` install of `dialog` and anything else needed before shutting down and restarting here
+ - We'll need to install `pacstrap` if it isn't already
+
+       sudo pacman -Syu arch-install-scripts
+       :: Synchronizing package databases...
+       core is up to date
+       [...]
+       :: Starting full system upgrade...
+       resolving dependencies...
+       looking for conflicting packages...
+
+       Packages (1) arch-install-scripts-28-1
+
+       Total Download Size:   0.02 MiB
+       Total Installed Size:  0.05 MiB
+
+       :: Proceed with installation? [Y/n] y
+       :: Retrieving packages...
+       arch-install-scripts-28-1-any             15.4 KiB  32.2 KiB/s 00:00 [#######################################] 100%
+       (1/1) checking keys in keyring                                        [#######################################] 100%
+       (1/1) checking package integrity                                      [#######################################] 100%
+       (1/1) loading package files                                           [#######################################] 100%
+       (1/1) checking for file conflicts                                     [#######################################] 100%
+       (1/1) checking available disk space                                   [#######################################] 100%
+       :: Processing package changes...
+       (1/1) installing arch-install-scripts                                 [#######################################] 100%
+       :: Running post-transaction hooks...
+       (1/1) Arming ConditionNeedsUpdate...
+
+ - Run `pacstrap -K /mnt dialog` to install `dialog` otherwise `wifi-menu` will not run after we boot offo f MicroSD
+
+       pacstrap -K /mnt dialog
+       ==> Creating install root at /mnt
+       gpg: /mnt/etc/pacman.d/gnupg/trustdb.gpg: trustdb created
+       gpg: no ultimately trusted keys found
+       gpg: starting migration from earlier GnuPG versions
+       gpg: porting secret keys from '/mnt/etc/pacman.d/gnupg/secring.gpg' to gpg-agent
+       gpg: migration succeeded
+       ==> Generating pacman master key. This may take some time.
+       gpg: Generating pacman keyring master key...
+       gpg: directory '/mnt/etc/pacman.d/gnupg/openpgp-revocs.d' created
+       gpg: revocation certificate stored as '/mnt/etc/pacman.d/gnupg/openpgp-revocs.d/1DF78C199B56A4CFA89B89314019C482E888BC19.rev'
+       gpg: Done
+       ==> Updating trust database...
+       gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+       gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+       ==> Installing packages to /mnt
+       :: Synchronizing package databases...
+       core                                     241.4 KiB   257 KiB/s 00:01 [#######################################] 100%
+       [...]
+       resolving dependencies...
+       looking for conflicting packages...
+
+       Packages (1) dialog-1:1.3_20230209-1
+
+       Total Download Size:   0.18 MiB
+       Total Installed Size:  0.47 MiB
+
+       :: Proceed with installation? [Y/n] 
+       :: Retrieving packages...
+        dialog-1:1.3_20230209-1-aarch64          183.1 KiB   313 KiB/s 00:01 [#######################################] 100%
+       (1/1) checking keys in keyring                                        [#######################################] 100%
+       (1/1) checking package integrity                                      [#######################################] 100%
+       (1/1) loading package files                                           [#######################################] 100%
+       (1/1) checking for file conflicts                                     [#######################################] 100%
+       (1/1) checking available disk space                                   [#######################################] 100%
+       :: Processing package changes...
+       (1/1) installing dialog                                               [#######################################] 100%
+       :: Running post-transaction hooks...
+       (1/1) Arming ConditionNeedsUpdate...
+
  - Unmount the drives mounted to `/mnt`
 
        umount -R /mnt
