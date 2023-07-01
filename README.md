@@ -383,7 +383,7 @@ If the steps above were completed successffuly, it should boot to a login prompt
      - Almost done!
       ![almost done](files/PXL_20230701_220532119.jpg)
      - And done!
-       ![done](iles/PXL_20230701_220806429.jpg)
+       ![done](files/PXL_20230701_220806429.jpg)
  - As long as there were no errors, we will install `sudo`
 
        pacman -S sudo
