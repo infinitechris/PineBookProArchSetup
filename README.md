@@ -363,7 +363,7 @@ If the steps above were completed successffuly, it should boot to a login prompt
    ![locale-gen](files/PXL_20230701_215406165.jpg)
 - This will load the uncommented locale
   ![locale generated](files/PXL_20230701_215418329.jpg)
- - Edit `locale.conf` and set `LANG` vairalbe to match the above
+ - Edit `locale.conf` and set `LANG` to match the above
 
        nano /etc/locale.conf
  - Delete `C`
