@@ -290,6 +290,7 @@ Then select the SD card to boot from.
 If the steps above were completed successffuly, it should boot to a login prompt.
 
 ![root menu login screen](files/PXL_20230701_214400589.jpg)
+## Change root and alarm passwords
 
  - Login as `root`, password `root`
  - I recommend changing `root` and `alarm` passwords at this tine
@@ -306,6 +307,7 @@ If the steps above were completed successffuly, it should boot to a login prompt
    ![new alarm passowrd](files/PXL_20230701_214514816.jpg)
 - Confirm password for `alarm`
    ![confirm alarm password](files/PXL_20230701_214524205.jpg)
+## Connect to wifi with wifi-menu and verify internet connection
  - Run `wifi-menu` to connect to wifi (if needed)
 
      ![run wifi-menu](files/PXL_20230701_210544636.jpg)
@@ -324,7 +326,7 @@ If the steps above were completed successffuly, it should boot to a login prompt
        ![ifconfig](files/PXL_20230701_210656543.jpg)
      - Ping `www.google.com` to confirm internet access
        ![ping google](files/PXL_20230701_210707989.jpg)
-
+## Initial pacman setup
  - Initalize the `pacman` keyring and populate `archlinuxarm` 
 
        pacman-key --init
@@ -334,6 +336,7 @@ If the steps above were completed successffuly, it should boot to a login prompt
    ![run pacman-key --populate archlinuxarm](files/PXL_20230701_214814020.jpg)
  - The pgp keys for the distribution will populate
    ![keys added](files/PXL_20230701_214821334.jpg)
+## Setting timezone and syncing hardware clock to ntp
  - Sync time and date from `ntp` servers to hardware (I'm on the east cost and use `Detroit`)
 
        timedatectl set-timezone America\Detroit
@@ -344,6 +347,7 @@ If the steps above were completed successffuly, it should boot to a login prompt
    
        hwclock --systohc
    ![snyc hardware clock to ntp](files/PXL_20230701_214951845.jpg)
+## Setting locale
  - Config your `locale`
 
        nano /etc/locale.gen
@@ -370,6 +374,7 @@ If the steps above were completed successffuly, it should boot to a login prompt
    ![before](files/PXL_20230701_215447236.jpg)
 - Replace with `en_US.UTF-8` to match, then save/ exit
    ![after](files/PXL_20230701_215520004.jpg)
+## Update packages
  - I typically update out of date packages at this time that way the OS on the MicroSD is up to date
 
        pacman -Syu
@@ -384,6 +389,7 @@ If the steps above were completed successffuly, it should boot to a login prompt
       ![almost done](files/PXL_20230701_220532119.jpg)
      - And done!
        ![done](files/PXL_20230701_220806429.jpg)
+## Installing sudo
  - As long as there were no errors, we will install `sudo`
 
        pacman -S sudo
