@@ -374,7 +374,7 @@ If the steps above were completed successffuly, it should boot to a login prompt
 
        pacman -Syu
    ![run pacman](files/PXL_20230701_215543150.jpg)
-      - If pacman haults at the `alarm` repo for a long while (more than 30 to 60 seconds,) you may need to adjust your repos to use the `archlinuxarm`. mirror. A working pacman.conf is included in files
+      - If pacman haults at the `alarm` repo for a long while (more than 30 to 60 seconds,) you may need to adjust your repos to use the `archlinuxarm`. mirror. A working pacman.conf is included in [files](files/pacman.conf)
         ![alarm repo hanging](files/PXL_20230701_215739997.jpg)
      - Updating all of the out of date packages will take some time
         ![packages to update](files/PXL_20230701_220015280.jpg)
