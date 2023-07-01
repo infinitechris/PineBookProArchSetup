@@ -37,6 +37,7 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
           - [relevant signiture](http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.sig)
  - I do recommend conenction via SSH after rebooting into Arch from MicroSD, as there are some lengthly commands to type out, some which contain signing keys and are a pain to type out manually.
 # MicroSD Setup
+## Downloading Tow-Boot and flashing
  - All of the following commands must be run as `root` so you must become `root`
 
        sudo su -
@@ -48,6 +49,7 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
  - use `lsblk` before running the following to figure out which device you will be flashing Tow Boot and change if needed
  
        dd if=pine64-pinebookPro-2021.10-005/shared.disk-image.img of=/dev/mmcblk1 bs=1M oflag=direct,sync status=progress
+## Creating root and boot partitions
  - Run `fdisk` to create partitions on this device
 
        fdisk /dev/mmcblk1
@@ -93,7 +95,8 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
            The partition table has been altered.
            Calling ioctl() to re-read partition table.
            Syncing disks.
- - Format `root` and `boot` partitions
+## Formatting root and boot partitions
+ - Format and mounting `root` and `boot` partitions
 
        mkfs.ext4 /dev/mmcblk1p2
        mkfs.ext4 /dev/mmcblk1p3
@@ -102,7 +105,8 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
        mount /dev/mmcblk1p3 /mnt
        mkdir /mnt/boot
        mount /dev/mmcblk1p2 /mnt/boot
- - Download the Arch ARM Installer Image and verify it via gpg
+## Downloading and extracting Arch Arm Installer image to root partition
+ - Download the Arch ARM Installer image and verify it via gpg
 
        axel -a http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
        axel -a http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz.sig
@@ -111,6 +115,7 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
  - Expand the image to `root` partition
 
        bsdtar -xpvf ArchLinuxARM-aarch64-latest.tar.gz -C /mnt
+## Adjusting fstab and exlinux.conf
  - Add the `root` partition info to `/mnt/etc/fstab`
 
        blkid /dev/mmcblk1p3 >> /mnt/etc/fstab
@@ -184,6 +189,7 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
 
        APPEND root=UUID=858802ab-cd7f-4ea2-8865-f3d596ea9661 rw
  - Save and exit by pressing `CTRL+X` then pressing `y` then by `ENTER`
+ ## Installing dialog and wpa_supplicant
  - We'll need to install `pacstrap` if it isn't already
 
        sudo pacman -Syu arch-install-scripts
@@ -212,9 +218,9 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
        :: Running post-transaction hooks...
        (1/1) Arming ConditionNeedsUpdate...
 
- - Run `pacstrap -K /mnt dialog` to install `dialog` otherwise `wifi-menu` will not run after we boot off of MicroSD
+ - Run `pacstrap -K /mnt dialog wpa_supplicant` to install `dialog` and `wpa_supplicant` otherwise `wifi-menu` will not run after we boot off of MicroSD
 
-       pacstrap -K /mnt dialog
+       pacstrap -K /mnt dialog wpa_supplicant
        ==> Creating install root at /mnt
        gpg: /mnt/etc/pacman.d/gnupg/trustdb.gpg: trustdb created
        gpg: no ultimately trusted keys found
