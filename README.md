@@ -222,43 +222,46 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
 
        pacstrap -K /mnt dialog wpa_supplicant
        ==> Creating install root at /mnt
-       gpg: /mnt/etc/pacman.d/gnupg/trustdb.gpg: trustdb created
-       gpg: no ultimately trusted keys found
-       gpg: starting migration from earlier GnuPG versions
-       gpg: porting secret keys from '/mnt/etc/pacman.d/gnupg/secring.gpg' to gpg-agent
-       gpg: migration succeeded
-       ==> Generating pacman master key. This may take some time.
-       gpg: Generating pacman keyring master key...
-       gpg: directory '/mnt/etc/pacman.d/gnupg/openpgp-revocs.d' created
-       gpg: revocation certificate stored as '/mnt/etc/pacman.d/gnupg/openpgp-revocs.d/1DF78C199B56A4CFA89B89314019C482E888BC19.rev'
-       gpg: Done
-       ==> Updating trust database...
-       gpg: marginals needed: 3  completes needed: 1  trust model: pgp
-       gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
        ==> Installing packages to /mnt
        :: Synchronizing package databases...
-       core                                     241.4 KiB   257 KiB/s 00:01 [#######################################] 100%
+       core is up to date
        [...]
        resolving dependencies...
        looking for conflicting packages...
 
-       Packages (1) dialog-1:1.3_20230209-1
+       Packages (5) duktape-2.7.0-6  pcsclite-2.0.0-1  polkit-122-1  dialog-1:1.3_20230209-1  wpa_supplicant-2:2.10-8
 
-       Total Download Size:   0.18 MiB
-       Total Installed Size:  0.47 MiB
+       Total Download Size:    2.04 MiB
+       Total Installed Size:  10.45 MiB
+       Net Upgrade Size:       9.99 MiB
 
        :: Proceed with installation? [Y/n] 
        :: Retrieving packages...
-        dialog-1:1.3_20230209-1-aarch64          183.1 KiB   313 KiB/s 00:01 [#######################################] 100%
-       (1/1) checking keys in keyring                                        [#######################################] 100%
-       (1/1) checking package integrity                                      [#######################################] 100%
-       (1/1) loading package files                                           [#######################################] 100%
-       (1/1) checking for file conflicts                                     [#######################################] 100%
-       (1/1) checking available disk space                                   [#######################################] 100%
+       wpa_supplicant-2:2.10-8-aarch64        1446.1 KiB  1055 KiB/s 00:01 [######################################] 100%
+       polkit-122-1-aarch64                    385.6 KiB  1252 KiB/s 00:00 [######################################] 100%
+       duktape-2.7.0-6-aarch64                 158.7 KiB   887 KiB/s 00:00 [######################################] 100%
+       pcsclite-2.0.0-1-aarch64                 96.5 KiB   567 KiB/s 00:00 [######################################] 100%
+       Total (4/4)                               2.0 MiB   882 KiB/s 00:02 [######################################] 100%
+       (5/5) checking keys in keyring                                       [######################################] 100%
+       (5/5) checking package integrity                                     [######################################] 100%
+       (5/5) loading package files                                          [######################################] 100%
+       (5/5) checking for file conflicts                                    [######################################] 100%
+       (5/5) checking available disk space                                  [######################################] 100%
        :: Processing package changes...
-       (1/1) installing dialog                                               [#######################################] 100%
+       (1/5) installing dialog                                            [######################################] 100%
+       (2/5) installing duktape                                             [######################################] 100%
+       (3/5) installing polkit                                              [######################################] 100%
+       (4/5) installing pcsclite                                            [######################################] 100%
+       (5/5) installing wpa_supplicant                                      [######################################] 100%
        :: Running post-transaction hooks...
-       (1/1) Arming ConditionNeedsUpdate...
+       (1/4) Creating system user accounts...
+       Creating group 'polkitd' with GID 102.
+       Creating user 'polkitd' (PolicyKit daemon) with UID 102 and GID 102.
+       (2/4) Reloading system manager configuration...
+       Skipped: Running in chroot.
+       (3/4) Arming ConditionNeedsUpdate...
+       (4/4) Reloading system bus configuration...
+
 
  - Unmount the drives mounted to `/mnt`
 
