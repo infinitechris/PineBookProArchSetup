@@ -212,7 +212,7 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
        :: Running post-transaction hooks...
        (1/1) Arming ConditionNeedsUpdate...
 
- - Run `pacstrap -K /mnt dialog` to install `dialog` otherwise `wifi-menu` will not run after we boot offo f MicroSD
+ - Run `pacstrap -K /mnt dialog` to install `dialog` otherwise `wifi-menu` will not run after we boot off of MicroSD
 
        pacstrap -K /mnt dialog
        ==> Creating install root at /mnt
