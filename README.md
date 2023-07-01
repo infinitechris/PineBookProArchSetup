@@ -111,7 +111,7 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
  - Expand the image to `root` partition
 
        bsdtar -xpvf ArchLinuxARM-aarch64-latest.tar.gz -C /mnt
- - Copy `root` partition UUID to `/mnt/etc/fstab`
+ - Add the `root` partition info to `/mnt/etc/fstab`
 
        blkid /dev/mmcblk1p3 >> /mnt/etc/fstab
  - Run `nano /mnt/etc/fstab` to adjust this file
@@ -129,7 +129,7 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
        UUID=858802ab-cd7f-4ea2-8865-f3d596ea9661       /       ext4    defaults        0       1
      - The string after `UUID=` will match your UUID for partition 3
  - Save and exit by pressing `CTRL+X` then pressing `y` then `ENTER`
- - copy `boot` partition UUID to `/mnt/etc/fstab`
+ - Add the `boot` partition info `/mnt/etc/fstab`
 
        blkid /dev/mmcblk1p2 >> /mnt/etc/fstab
  - Run `nano /mnt/etc/fstab` again to adjust
@@ -151,9 +151,39 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
  - Create `extlinux` directory within `/mnt/boot`
 
        mkdir -p /mnt/boot/extlinux
- - Add the `root` partition UUID to `extlinux.conf` file
- - 
+ - Add the `root` partition info to `extlinux.conf` file
+
+       blkid /dev/mmcblk1p3 >> /mnt/boot/extlinux/extlinux.conf
+ - Run `nano /mnt/boot/extlinux/extlinux.conf` to edit this file
+
        nano /mnt/boot/extlinux/extlinux.conf
+ - Copy the following and paste into `extlinux.conf` file
+
+       DEFAULT arch
+       MENU TITLE Boot Menu
+       PROMPT 0
+       TIMEOUT 50
+
+       LABEL arch
+       MENU LABEL Arch Linux ARM
+       LINUX /Image
+       INITRD /initramfs-linux.img
+       FDT /dtbs/rockchip/rk3399-pinebook-pro.dtb
+       APPEND root=UUID=7f7965a3-e04a-4e6b-ae6b-f8110202c61b rw
+
+       LABEL arch-fallback
+       MENU LABEL Arch Linux ARM with fallback initramfs
+       LINUX /Image
+       INITRD /initramfs-linux-fallback.img
+       FDT /dtbs/rockchip/rk3399-pinebook-pro.dtb
+       APPEND root=UUID=7f7965a3-e04a-4e6b-ae6b-f8110202c61b rw
+ - UUID on line 11 will need adjusted similar to the followng (replace with UUID for your `root` partiton)
+
+       APPEND root=UUID=858802ab-cd7f-4ea2-8865-f3d596ea9661 rw
+ - UUID on line 18 will need adjusted similar to the following (replace with the UUID for your `root` partition)
+
+       APPEND root=UUID=858802ab-cd7f-4ea2-8865-f3d596ea9661 rw
+ - Save and exit by pressing `CTRL+X` then pressing `y` then by `ENTER`
  - Add `pacstrap` install of `dialog` and anything else needed before shutting down and restarting here
  - Unmount the drives mounted to `/mnt`
 
