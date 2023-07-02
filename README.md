@@ -442,6 +442,7 @@ Power back up your system to verify that everything updated correctly, hitting `
        pacman -S ap6256-firmware libdrm-pinebookpro pinebookpro-audio pinebookpro-post-install towboot-pinebookpro-bin
  - If any of the above packages fail, remove them from the install and we'll have to manually get them.
       ![error](files/Screenshot_20230701-200308.png)
+ - On another device, browse to [archlinuxarm-pbp/os/aarch64](https://pacman.kiljan.org/archlinuxarm-pbp/os/aarch64/) on the kiljan repo
  - Shutdown
 
        shutdown -h now
