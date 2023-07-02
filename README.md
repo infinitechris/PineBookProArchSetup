@@ -397,7 +397,7 @@ If the steps above were completed successffuly, it should boot to a login prompt
 - Press `CTRL+W` and search for `wheel` to find the line we want
   ![search](files/PXL_20230701_235308301.jpg)
  - Uncomment the line `# %wheel ALL=(ALL:ALL) ALL` and then save/ exit
-   
+  ![edit line](files/PXL_20230701_235316040.jpg)
  - Shutdown
 
        shutdown -h now
