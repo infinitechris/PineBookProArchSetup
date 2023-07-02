@@ -428,6 +428,11 @@ Power back up your system to verify that everything updated correctly, hitting `
        SigLevel = Optional TrustedOnly
        Server = http://pacman.kiljan.org/$repo/os/$arch
        EOF
+     - If you're using JuiceSSH on android, I've found that the above doesn't paste correctly
+     ![JuiceSSH error](files/Screenshot_20230701-211840.png)
+     - What you will have to do is edit `pacman.cong` and paste the above three lines in (without the EOF line)
+     - The last lines of `pacman.conf` should look like the following when this step is done
+          ![pacman.conf](files/edit_line.png)
  - Sync the repos
 
        pacman -Sy
