@@ -267,7 +267,7 @@ Also, I have a [Raspberry Pi USB WiFi Dongle](https://www.raspberrypi.com/produc
  - Shutdown
 
        shutdown -h now
-# EMMC Setup
+# Finishing Arch on MicroSD Setup
 Whew! That part is done. From here in you **will** need a live internet connection.
 
 I **highly** recommend plugging your laptop into a power source before booting from MicroSD as we will NOT have a battery indicator until we have a DE.
