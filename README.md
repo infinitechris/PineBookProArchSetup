@@ -454,10 +454,15 @@ Power back up your system to verify that everything updated correctly, hitting `
 
         axel -a https://pacman.kiljan.org/archlinuxarm-pbp/os/aarch64/ap6256-firmware-2020.02-10-aarch64.pkg.tar.xz
  - Repeat for the other firmware that was missing
-     - I was missing `ap6256, pinebook-pro-post-install and pinebook-audio`
+     - I was missing `ap6256`, `pinebook-pro-post-install` and `pinebook-audio`
+ - Run `pacman -U` and then each of the packages you downloaded to install
  - Shutdown
 
        shutdown -h now
+
+Congrats! If you want to, you can skip to installing a DE if you want to run Arch with a DE on MicroSD.
+
+Continue following along to install Arch on the EMMC!
 
 ## Writing OS to EMMC
 A lot of the following commands in the following section are the same as [MicroSD Setup](https://github.com/infinitechris/PineBookProArchSetup/blob/main/README.md#microsd-setup), as the majority of the changes are for the destination for `dd` 
