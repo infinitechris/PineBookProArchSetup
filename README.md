@@ -274,6 +274,8 @@ I **highly** recommend plugging your laptop into a power source before booting f
 
 The following steps will give you a 100% usable MicroSD running pinebook firmware if desired, or if not, skip to [here](https://github.com/infinitechris/PineBookProArchSetup/tree/main#writing-os-to-emmc) as the next steps will all be repeated on the Arch install on the EMMC. In the next steps we will be initalizing the pacman install, and installing firmware. It's always good to have a backup MicroSD stashed away (I even have a backup emmc just in case!)
 
+One last note, I promise: you will need to follow the next steps if you wish to install Arch to the EMMC without a wifi dongle or Ethernet plugged in. 
+
 ## Updating packages on MicroSD
 You will need to select the MicroSD to boot from for this section.
 
