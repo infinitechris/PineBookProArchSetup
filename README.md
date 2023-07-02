@@ -411,10 +411,12 @@ Power back up your system to verify that everything updated correctly, hitting `
   ![alarm login](files/PXL_20230701_214626337.jpg)
 - run `sudo wifi-menu` and connect to your AP
 - run `ifconfig` to find your IP address
+  ![ifconfig](files/PXL_20230701_210656543.jpg)
 - On another device connect to your pinebook's ip address using ssh to your Pinebook
 - Become `root` again, after logging in, as all of the following commands need to be run as `root` and not `sudo COMMAND`
 
        sudo su
+  ![become root](files/Screenshot_20230701-195654.png)
 - Add the kiljan pgp keys for the Pinebook firmware
 
        pacman-key --keyserver hkps://keys.openpgp.org/ --recv-keys A1EC3C686EF7A9DD232D1563D4D12D6AA6A92769
