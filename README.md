@@ -389,10 +389,15 @@ If the steps above were completed successffuly, it should boot to a login prompt
  - As long as there were no errors, we will install `sudo`
 
        pacman -S sudo
+   ![install sudo](files/PXL_20230701_234938530.jpg)
  - Edit `sudoers` to allow members of the group `wheel` to access `sudo`
 
        nano /etc/sudoers
+   ![edit sudoers](files/PXL_20230701_235109267.jpg)
+- Press `CTRL+W` and search for `wheel` to find the line we want
+  ![search](files/PXL_20230701_235308301.jpg)
  - Uncomment the line `# %wheel ALL=(ALL:ALL) ALL` and then save/ exit
+   
  - Shutdown
 
        shutdown -h now
