@@ -272,7 +272,9 @@ Whew! That part is done. From here in you **will** need a live internet connecti
 
 I **highly** recommend plugging your laptop into a power source before booting from MicroSD as we will NOT have a battery indicator until we have a DE.
 
-## Updating Arch on MicroSD
+The following steps will give you a 100% usable MicroSD running pinebook firmware if desired, or if not, skip to [here](https://github.com/infinitechris/PineBookProArchSetup/tree/main#writing-os-to-emmc) as the next steps will all be repeated on the Arch install on the EMMC. In the next steps we will be initalizing the pacman install, and installing firmware. It's always good to have a backup MicroSD stashed away (I even have a backup emmc just in case!)
+
+## Updating packages on MicroSD
 You will need to select the MicroSD to boot from for this section.
 
 When you're ready, power back up, then press `ESC` when the prompt on the bottom of your screen shows up.
@@ -401,8 +403,6 @@ If the steps above were completed successffuly, it should boot to a login prompt
  - Shutdown
 
        shutdown -h now
-
-This will give you a 100% usable MicroSD running pinebook firmware, or skip to [here](https://github.com/infinitechris/PineBookProArchSetup/tree/main#writing-os-to-emmc) as the next steps will all be repeated on the Arch install on the EMMC.
 
 ## Installing Pinebook Firmware on MicroSD
 Power back up your system to verify that everything updated correctly, hitting `ESC` when the prompt on the bottom of your screen appears, and selecting the MicroSD to boot from.
