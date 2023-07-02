@@ -443,6 +443,7 @@ Power back up your system to verify that everything updated correctly, hitting `
  - If any of the above packages fail, remove them from the install and we'll have to manually get them.
       ![error](files/Screenshot_20230701-200308.png)
  - Browse to [archlinuxarm-pbp/os/aarch64](https://pacman.kiljan.org/archlinuxarm-pbp/os/aarch64/) on the kiljan repo
+   ![kiljan repo](files/Screenshot_20230701_201613.png)
  - Copy the path to ap6256-firmware-2020.02-10-aarch64.pkg.tar.xz and paste it after `axel -a` in the terminal
 
         axel -a https://pacman.kiljan.org/archlinuxarm-pbp/os/aarch64/ap6256-firmware-2020.02-10-aarch64.pkg.tar.xz
