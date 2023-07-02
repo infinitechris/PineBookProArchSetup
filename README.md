@@ -385,10 +385,10 @@ If the steps above were completed successffuly, it should boot to a login prompt
       ![almost done](files/PXL_20230701_220532119.jpg)
      - And done!
        ![done](files/PXL_20230701_220806429.jpg)
-## Installing sudo
- - As long as there were no errors, we will install `sudo`
+## Installing sudo and axel
+ - As long as there were no errors, we will install `sudo and axel`
 
-       pacman -S sudo
+       pacman -S sudo axel
    ![install sudo](files/PXL_20230701_234938530.jpg)
  - Edit `sudoers` to allow members of the group `wheel` to access `sudo`
 
@@ -444,10 +444,17 @@ Power back up your system to verify that everything updated correctly, hitting `
       ![error](files/Screenshot_20230701-200308.png)
  - Browse to [archlinuxarm-pbp/os/aarch64](https://pacman.kiljan.org/archlinuxarm-pbp/os/aarch64/) on the kiljan repo
    ![kiljan repo](files/Screenshot_20230701_201613.png)
- - Copy the path to ap6256-firmware-2020.02-10-aarch64.pkg.tar.xz and paste it after `axel -a` in the terminal
+ - make a Downloads folder
+
+       mkdir Downloads
+ - change to this directory
+
+       cd Downloads
+ - Copy the path to ap6256-firmware-2020.02-10-aarch64.pkg.tar.xz and paste it after `axel -a` in the terminal and press enter to download manually
 
         axel -a https://pacman.kiljan.org/archlinuxarm-pbp/os/aarch64/ap6256-firmware-2020.02-10-aarch64.pkg.tar.xz
  - Repeat for the other firmware that was missing
+     - I was missing `ap6256, pinebook-pro-post-install and pinebook-audio`
  - Shutdown
 
        shutdown -h now
